@@ -1,63 +1,68 @@
-%option noyywrap c++
+%option c++
+%option yylineno
+%option noyywrap
+
 %{
-	#include <iostream>
-	#include <string>
 
-	typedef enum {
-		/* 簿记单词符号 */
-		ENDFILE, ERROR,
-		/* 保留字 */
-		PROGRAM, PROCEDURE, TYPE, VAR, IF,
-		THEN, ELSE, FI, WHILE, DO,
-		ENDWH, BEGIN1, END, READ, WRITE,
-		ARRAY, OF, RECORD, RETURN1,
-		/* 类型 */
-		INTEGER, CHAR,
-		/* 多字符单词符号 */
-		ID, INTC, CHARC,
-		/* 特殊符号 */
-		ASSIGN, EQ, LT, GT, PLUS, MINUS,
-		TIMES, OVER, LPAREN, RPAREN, DOT,
-		COLON, SEMI, COMMA, LMIDPAREN, RMIDPAREN,
-		UNDERANGE
-	} TokenType;
+#include <iostream>
+#include <string>
 
-	/* 定义保留字数量常量 */
-	#define MAXRESERVED 21
-	/* 保留字字符串数组（查找表）*/
-	static struct {
-		const char* str;
-		TokenType tok;
-	} reservedWords[MAXRESERVED] = {
-		{"program", PROGRAM},
-		{"procedure", PROCEDURE},
-		{"type", TYPE},
-		{"var", VAR},
-		{"if", IF},
-		{"then", THEN},
-		{"else", ELSE},
-		{"fi", FI},
-		{"while", WHILE},
-		{"do", DO},
-		{"endwh", ENDWH},
-		{"begin", BEGIN1},
-		{"end", END},
-		{"read", READ},
-		{"write", WRITE},
-		{"array", ARRAY},
-		{"of", OF},
-		{"record", RECORD},
-		{"return", RETURN1},
-		{"integer", INTEGER},
-		{"char", CHAR}
-	};
+typedef enum {
+	/* 簿记单词符号 */
+	ENDFILE, ERROR,
+	/* 保留字 */
+	PROGRAM, PROCEDURE, TYPE, VAR, IF,
+	THEN, ELSE, FI, WHILE, DO,
+	ENDWH, BEGIN1, END, READ, WRITE,
+	ARRAY, OF, RECORD, RETURN1,
+	/* 类型 */
+	INTEGER, CHAR,
+	/* 多字符单词符号 */
+	ID, INTC, CHARC,
+	/* 特殊符号 */
+	ASSIGN, EQ, LT, GT, PLUS, MINUS,
+	TIMES, OVER, LPAREN, RPAREN, DOT,
+	COLON, SEMI, COMMA, LMIDPAREN, RMIDPAREN,
+	UNDERANGE
+} TokenType;
 
-	/* 保留字查找函数 */
-	TokenType reservedLookup(char* s);
-	/* 存储token内容 */
-	char yylval[20];
-	/* 此行之后的内容是否为注释 */
-	int isComment = 0;
+/* 定义保留字数量常量 */
+const int MAXRESERVED = 21;
+/* 保留字字符串数组（查找表）*/
+static struct {
+	const char* str;
+	const TokenType tok;
+} reservedWords[MAXRESERVED] = {
+	{"program", PROGRAM},
+	{"procedure", PROCEDURE},
+	{"type", TYPE},
+	{"var", VAR},
+	{"if", IF},
+	{"then", THEN},
+	{"else", ELSE},
+	{"fi", FI},
+	{"while", WHILE},
+	{"do", DO},
+	{"endwh", ENDWH},
+	{"begin", BEGIN1},
+	{"end", END},
+	{"read", READ},
+	{"write", WRITE},
+	{"array", ARRAY},
+	{"of", OF},
+	{"record", RECORD},
+	{"return", RETURN1},
+	{"integer", INTEGER},
+	{"char", CHAR}
+};
+
+/* 保留字查找函数 */
+TokenType reservedLookup(char* s);
+/* 存储token内容 */
+char yylval[20];
+/* 此行之后的内容是否为注释 */
+int isComment = 0;
+
 %}
 
 %%
