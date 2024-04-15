@@ -24,6 +24,6 @@ Test System:
 
 - [x] **macOS** Sonoma 14.2.1
 
-
+- [x] **linux** Ubuntu 22.04.4 LTS
 
     
