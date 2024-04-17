@@ -1,11 +1,10 @@
-%option c++
-%option yylineno
+
 %option noyywrap
 
 %{
 
-#include <iostream>
-#include <string>
+#include <stdio.h>
+#include <string.h>
 
 typedef enum {
 	/* 簿记单词符号 */
@@ -27,7 +26,7 @@ typedef enum {
 } TokenType;
 
 /* 定义保留字数量常量 */
-const int MAXRESERVED = 21;
+#define MAXRESERVED 21
 /* 保留字字符串数组（查找表）*/
 static struct {
 	const char* str;
@@ -130,65 +129,64 @@ TokenType reservedLookup(char* s) {
 	}
 	return ID;
 }
-
-std::string getTokenStr(TokenType token) {
-	switch (token) {
-		case PROGRAM: return "reserved word: program";
-		case PROCEDURE: return "reserved word: procedure";
-		case TYPE: return "reserved word: type";
-		case VAR: return "reserved word: var";
-		case IF: return "reserved word: if";
-		case THEN: return "reserved word: then";
-		case ELSE: return "reserved world: else";
-		case FI: return "reserved word: fi";
-		case WHILE: return "reserved word: while";
-		case DO: return "reserved word: do";
-		case ENDWH: return "reserved word: endwh";
-		case BEGIN1: return "reserved word: begin";
-		case END: return "reserved word: end";
-		case READ: return "reserved word: read";
-		case WRITE: return "reserved word: write";
-		case ARRAY: return "reserved word: array";
-		case OF: return "reserved word: of";
-		case RECORD: return "reserved word: record";
-		case RETURN1: return "reserved word: return";
-		case INTEGER: return "reserved word: integer";
-		case CHAR: return "reserved word: char";
-
-		case ID: return "ID, name: " + std::string(yylval);
-		case INTC: return "INTC, value: " + std::string(yylval);
-		case CHARC: return "CHARC, value: " + std::string(yylval);
-	
-		case ASSIGN: return ":=";
-		case EQ: return "=";
-		case LT: return "<";
-		case GT: return ">";
-		case PLUS: return "+";
-		case MINUS: return "-";
-		case TIMES: return "*";
-		case OVER: return "/";
-		case LPAREN: return "(";
-		case RPAREN: return ")";
-		case DOT: return ".";
-		case COLON: return ":";
-		case SEMI: return ";";
-		case COMMA: return ",";
-		case LMIDPAREN: return "[";
-		case RMIDPAREN: return "]";
-		case UNDERANGE: return "..";
-		
-		case ERROR: return "ERROR: " + std::string(yylval);
-		case ENDFILE: return "EOF";
-		default: return "UNKNOWN";
-	}
+char* printToken(int token) {
+    static char tokenStr[100]; // 用于存储返回的字符串
+    switch (token) {
+        case PROGRAM: strcpy(tokenStr, "reserved word: program"); break;
+        case PROCEDURE: strcpy(tokenStr, "reserved word: procedure"); break;
+        case TYPE: strcpy(tokenStr, "reserved word: type"); break;
+        case VAR: strcpy(tokenStr, "reserved word: var"); break;
+        case IF: strcpy(tokenStr, "reserved word: if"); break;
+        case THEN: strcpy(tokenStr, "reserved word: then"); break;
+        case ELSE: strcpy(tokenStr, "reserved word: else"); break;
+        case FI: strcpy(tokenStr, "reserved word: fi"); break;
+        case WHILE: strcpy(tokenStr, "reserved word: while"); break;
+        case DO: strcpy(tokenStr, "reserved word: do"); break;
+        case ENDWH: strcpy(tokenStr, "reserved word: endwh"); break;
+        case BEGIN1: strcpy(tokenStr, "reserved word: begin"); break;
+        case END: strcpy(tokenStr, "reserved word: end"); break;
+        case READ: strcpy(tokenStr, "reserved word: read"); break;
+        case WRITE: strcpy(tokenStr, "reserved word: write"); break;
+        case ARRAY: strcpy(tokenStr, "reserved word: array"); break;
+        case OF: strcpy(tokenStr, "reserved word: of"); break;
+        case RECORD: strcpy(tokenStr, "reserved word: record"); break;
+        case RETURN1: strcpy(tokenStr, "reserved word: return"); break;
+        case INTEGER: strcpy(tokenStr, "reserved word: integer"); break;
+        case CHAR: strcpy(tokenStr, "reserved word: char"); break;
+		case ID: strcpy(tokenStr, "ID, name: "); break;
+        case INTC: strcpy(tokenStr, "INTC, value: "); break;
+        case CHARC: strcpy(tokenStr, "CHARC, value: "); break;
+        case ASSIGN: strcpy(tokenStr, ":="); break;
+        case EQ: strcpy(tokenStr, "="); break;
+        case LT: strcpy(tokenStr, "<"); break;
+        case GT: strcpy(tokenStr, ">"); break;
+        case PLUS: strcpy(tokenStr, "+"); break;
+        case MINUS: strcpy(tokenStr, "-"); break;
+        case TIMES: strcpy(tokenStr, "*"); break;
+        case OVER: strcpy(tokenStr, "/"); break;
+        case LPAREN: strcpy(tokenStr, "("); break;
+        case RPAREN: strcpy(tokenStr, ")"); break;
+        case DOT: strcpy(tokenStr, "."); break;
+        case COLON: strcpy(tokenStr, ":"); break;
+        case SEMI: strcpy(tokenStr, ";"); break;
+        case COMMA: strcpy(tokenStr, ","); break;
+        case LMIDPAREN: strcpy(tokenStr, "["); break;
+        case RMIDPAREN: strcpy(tokenStr, "]"); break;
+        case UNDERANGE: strcpy(tokenStr, ".."); break;
+        case ERROR: strcpy(tokenStr, "ERROR: "); break;
+        case ENDFILE: strcpy(tokenStr, "EOF"); break;
+        default: strcpy(tokenStr, "UNKNOWN"); break;
+    }
+    return tokenStr;
 }
 
+
 int main(int argc, char **argv) {
-	FlexLexer* lexer = new yyFlexLexer;
+	//FlexLexer* lexer = new yyFlexLexer;
 	int token = 1;
 	while (token) {
-		token = lexer->yylex();
-		std::cout << getTokenStr((TokenType)token) << std::endl;
+		token = yylex();
+		printf("%s\n",printToken(token));
 	}
 	return 0;
 }

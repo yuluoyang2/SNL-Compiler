@@ -9,10 +9,10 @@ os=$(uname -s)
 
 # Compile the parser
 if [ "$os" == "Darwin" ]; then
-    gcc syntax.tab.c syntax_tree.c lex.yy.cc -ly -o parser
+    gcc syntax.tab.c syntax_tree.c lex.yy.c -ly -o parser
     echo "Parser compiled successfully."
 elif [ "$os" == "Linux" ]; then
-    gcc syntax.tab.c syntax_tree.c lex.yy.cc -Xlinker -zmuldefs -o parser
+    gcc syntax.tab.c syntax_tree.c lex.yy.c -Xlinker -zmuldefs -o parser
     echo "Parser compiled successfully."
 else
     echo "Unsupported operating system: $os"
