@@ -19,7 +19,7 @@ typedef struct treeNode{
     // Token类型
     char* name;
     // fchild是第一个孩子节点，next是兄弟节点，使用孩子兄弟表示法
-    struct treeNode *fchild,*next;
+    struct treeNode *father, *fchild, *next;
     // 联合体，同一时间只能保存一个成员的值，分配空间是其中最大类型的内存大小
     union{
         // id内容或者type类型（int/float）

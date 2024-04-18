@@ -1,10 +1,9 @@
 %{
 #include<unistd.h>
 #include<stdio.h>   
-#include "syntax_tree.h"
+#include "main.h"
 int yylex();
 %}
-
 %union{
     tnode type_tnode;
 	double d;
@@ -12,7 +11,7 @@ int yylex();
 
 /*声明记号*/
 %token <type_tnode> INTC CHARC ID
-%token <type_tnode> PROGRAM PROCEDURE TYPE VAR IF THEN ELSE FI WHILE DO ENDWH BEGIN END READ WRITE ARRAY OF RECORD RETURN INTEGER CHAR
+%token <type_tnode> PROGRAM PROCEDURE TYPE VAR IF THEN ELSE FI WHILE DO ENDWH BEGIN1 END READ WRITE ARRAY OF RECORD RETURN INTEGER CHAR
 %token <type_tnode> SEMI COMMA ASSIGN PLUS MINUS TIMES DIV DOT NOT LPAREN RPAREN LMIDPAREN RMINPAREN RELOP UNDERANGE
 %token <type_tnode> COMMENT SPACE EOL AERROR
 
@@ -39,13 +38,13 @@ int yylex();
 //主程序体
 %type <type_tnode> ProgramBody
 //语句序列
-%type <type_tnode> StmList StmMore 
+%type <type_tnode> StmList StmMore
 //语句
 %type <type_tnode> Stm AssCall
 //赋值语句 条件语句
 %type <type_tnode> AssignmentRest ConditionalStm LoopStm InputStm Invar OutputStm ReturnStm CallStmRest ActParamList ActParamMore
 //表达式
-%type <type_tnode> RelExp OtherRelE Exp OtherTerm 
+%type <type_tnode> RelExp OtherRelE Exp OtherTerm
 //项
 %type <type_tnode> Term OtherFactor
 //因子
@@ -56,17 +55,17 @@ int yylex();
 %left RELOP
 %left PLUS MINUS
 %left TIMES DIV
-%right NOT 
+%right NOT
 %left LPAREN RPAREN LMIDPAREN RMINPAREN DOT
 
-%nonassoc LOWER_THAN_ELSE 
+%nonassoc LOWER_THAN_ELSE
 %nonassoc ELSE
 
 /*产生式*/
 /*$$表示左表达式 ${num}表示右边的第几个表达式*/
 %%
 
-Program:ProgramHead DeclarePart ProgramBody{$$=newAst("Program",3,$1,$2,$3);nodeList[nodeNum]=$$;nodeNum++;}
+Program:ProgramHead DeclarePart ProgramBody DOT {$$=newAst("Program",3,$1,$2,$3);nodeList[nodeNum]=$$;nodeNum++;}
 
 ProgramHead:PROGRAM ProgramName{$$=newAst("ProgramHead",2,$1,$2);nodeList[nodeNum]=$$;nodeNum++;}
 ProgramName:ID{$$=newAst("ProgramName",1,$1);nodeList[nodeNum]=$$;nodeNum++;}
@@ -106,7 +105,7 @@ VarDecpart:{$$=newAst("VarDecpart",0,-1);nodeList[nodeNum]=$$;nodeNum++;}
 VarDec:VAR VarDecList{$$=newAst("VarDec",2,$1,$2);nodeList[nodeNum]=$$;nodeNum++;}
 VarDecList:TypeDef VarIdList SEMI VarDecMore{$$=newAst("VarDecList",4,$1,$2,$3,$4);nodeList[nodeNum]=$$;nodeNum++;}
 VarDecMore:{$$=newAst("VarDecMore",0,-1);nodeList[nodeNum]=$$;nodeNum++;}
-    |VarDecList{$$=newAst("VarDecMore",0,$1);nodeList[nodeNum]=$$;nodeNum++;}
+    |VarDecList{$$=newAst("VarDecMore",1,$1);nodeList[nodeNum]=$$;nodeNum++;}
 VarIdList:ID VarIdMore{$$=newAst("VarIdList",2,$1,$2);nodeList[nodeNum]=$$;nodeNum++;}
 VarIdMore:{$$=newAst("VarIdMore",0,-1);nodeList[nodeNum]=$$;nodeNum++;}
     |COMMA VarIdList{$$=newAst("VarIdMore",2,$1,$2);nodeList[nodeNum]=$$;nodeNum++;}
@@ -132,7 +131,7 @@ FidMore:{$$=newAst("FidMore",0,-1);nodeList[nodeNum]=$$;nodeNum++;}
 ProcDecPart:DeclarePart{$$=newAst("ProcDecPart",1,$1);nodeList[nodeNum]=$$;nodeNum++;}
 ProcBody:ProgramBody{$$=newAst("ProcBody",1,$1);nodeList[nodeNum]=$$;nodeNum++;}
 
-ProgramBody:BEGIN StmList END{$$=newAst("ProgramBody",3,$1,$2,$3);nodeList[nodeNum]=$$;nodeNum++;}
+ProgramBody:BEGIN1 StmList END{$$=newAst("ProgramBody",3,$1,$2,$3);nodeList[nodeNum]=$$;nodeNum++;}
 
 StmList:Stm StmMore{$$=newAst("StmList",2,$1,$2);nodeList[nodeNum]=$$;nodeNum++;}
 StmMore:{$$=newAst("StmMore",0,-1);nodeList[nodeNum]=$$;nodeNum++;}
