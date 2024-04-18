@@ -101,7 +101,7 @@ IdMore:{$$=newAst("IdMore",0,-1);nodeList[nodeNum]=$$;nodeNum++;}
     |COMMA IdList{$$=newAst("IdMore",2,$1,$2);nodeList[nodeNum]=$$;nodeNum++;}
 
 VarDecpart:{$$=newAst("VarDecpart",0,-1);nodeList[nodeNum]=$$;nodeNum++;}
-    |VarDec{$$=newAst("VarDecPart",1,$1);nodeList[nodeNum]=$$;nodeNum++;}
+    |VarDec{$$=newAst("VarDecpart",1,$1);nodeList[nodeNum]=$$;nodeNum++;}
 VarDec:VAR VarDecList{$$=newAst("VarDec",2,$1,$2);nodeList[nodeNum]=$$;nodeNum++;}
 VarDecList:TypeDef VarIdList SEMI VarDecMore{$$=newAst("VarDecList",4,$1,$2,$3,$4);nodeList[nodeNum]=$$;nodeNum++;}
 VarDecMore:{$$=newAst("VarDecMore",0,-1);nodeList[nodeNum]=$$;nodeNum++;}
@@ -112,7 +112,8 @@ VarIdMore:{$$=newAst("VarIdMore",0,-1);nodeList[nodeNum]=$$;nodeNum++;}
 
 ProcDecpart:{$$=newAst("ProcDecpart",0,-1);nodeList[nodeNum]=$$;nodeNum++;}
     |ProcDec{$$=newAst("ProcDecpart",1,$1);nodeList[nodeNum]=$$;nodeNum++;}
-ProcDec:PROCEDURE ProcName LPAREN ParamList RPAREN SEMI ProcDecPart ProcBody ProcDecMore{$$=newAst("ProcDec",9,$1,$2,$3,$4,$5,$6,$7,$8,$9);nodeList[nodeNum]=$$;nodeNum++;}
+ProcDec:PROCEDURE ProcName LPAREN ParamList RPAREN SEMI 
+        ProcDecPart ProcBody ProcDecMore{$$=newAst("ProcDec",9,$1,$2,$3,$4,$5,$6,$7,$8,$9);nodeList[nodeNum]=$$;nodeNum++;}
 ProcDecMore:{$$=newAst("ProcDecMore",0,-1);nodeList[nodeNum]=$$;nodeNum++;}
     |ProcDec{$$=newAst("ProcDecMore",1,$1);nodeList[nodeNum]=$$;nodeNum++;}
 ProcName:ID{$$=newAst("ProName",1,$1);nodeList[nodeNum]=$$;nodeNum++;}
@@ -131,7 +132,7 @@ FidMore:{$$=newAst("FidMore",0,-1);nodeList[nodeNum]=$$;nodeNum++;}
 ProcDecPart:DeclarePart{$$=newAst("ProcDecPart",1,$1);nodeList[nodeNum]=$$;nodeNum++;}
 ProcBody:ProgramBody{$$=newAst("ProcBody",1,$1);nodeList[nodeNum]=$$;nodeNum++;}
 
-ProgramBody:BEGIN1 StmList END{$$=newAst("ProgramBody",3,$1,$2,$3);nodeList[nodeNum]=$$;nodeNum++;}
+ProgramBody:BEGIN1 StmList END {$$=newAst("ProgramBody",3,$1,$2,$3);nodeList[nodeNum]=$$;nodeNum++;}
 
 StmList:Stm StmMore{$$=newAst("StmList",2,$1,$2);nodeList[nodeNum]=$$;nodeNum++;}
 StmMore:{$$=newAst("StmMore",0,-1);nodeList[nodeNum]=$$;nodeNum++;}

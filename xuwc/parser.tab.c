@@ -611,13 +611,13 @@ static const yytype_uint8 yyrline[] =
       79,    80,    81,    83,    84,    85,    86,    87,    88,    89,
       91,    92,    93,    94,    95,    96,    97,    98,    99,   100,
      101,   103,   104,   105,   106,   107,   108,   109,   110,   111,
-     113,   114,   115,   116,   117,   118,   120,   121,   122,   123,
-     124,   125,   126,   127,   128,   129,   131,   132,   134,   136,
-     137,   138,   139,   140,   141,   142,   143,   144,   145,   146,
-     147,   148,   149,   150,   151,   152,   153,   155,   156,   157,
-     158,   159,   160,   161,   162,   163,   164,   165,   166,   167,
-     168,   169,   170,   171,   172,   173,   174,   175,   176,   177,
-     178,   179,   180,   181,   182
+     113,   114,   115,   117,   118,   119,   121,   122,   123,   124,
+     125,   126,   127,   128,   129,   130,   132,   133,   135,   137,
+     138,   139,   140,   141,   142,   143,   144,   145,   146,   147,
+     148,   149,   150,   151,   152,   153,   154,   156,   157,   158,
+     159,   160,   161,   162,   163,   164,   165,   166,   167,   168,
+     169,   170,   171,   172,   173,   174,   175,   176,   177,   178,
+     179,   180,   181,   182,   183
 };
 #endif
 
@@ -1481,7 +1481,7 @@ yyreduce:
 
   case 32: /* VarDecpart: VarDec  */
 #line 104 "parser.y"
-           {(yyval.type_tnode)=newAst("VarDecPart",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
+           {(yyval.type_tnode)=newAst("VarDecpart",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1486 "parser.tab.c"
     break;
 
@@ -1540,379 +1540,379 @@ yyreduce:
     break;
 
   case 42: /* ProcDec: PROCEDURE ProcName LPAREN ParamList RPAREN SEMI ProcDecPart ProcBody ProcDecMore  */
-#line 115 "parser.y"
-                                                                                        {(yyval.type_tnode)=newAst("ProcDec",9,(yyvsp[-8].type_tnode),(yyvsp[-7].type_tnode),(yyvsp[-6].type_tnode),(yyvsp[-5].type_tnode),(yyvsp[-4].type_tnode),(yyvsp[-3].type_tnode),(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
+#line 116 "parser.y"
+                                        {(yyval.type_tnode)=newAst("ProcDec",9,(yyvsp[-8].type_tnode),(yyvsp[-7].type_tnode),(yyvsp[-6].type_tnode),(yyvsp[-5].type_tnode),(yyvsp[-4].type_tnode),(yyvsp[-3].type_tnode),(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1546 "parser.tab.c"
     break;
 
   case 43: /* ProcDecMore: %empty  */
-#line 116 "parser.y"
+#line 117 "parser.y"
             {(yyval.type_tnode)=newAst("ProcDecMore",0,-1);nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1552 "parser.tab.c"
     break;
 
   case 44: /* ProcDecMore: ProcDec  */
-#line 117 "parser.y"
+#line 118 "parser.y"
             {(yyval.type_tnode)=newAst("ProcDecMore",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1558 "parser.tab.c"
     break;
 
   case 45: /* ProcName: ID  */
-#line 118 "parser.y"
+#line 119 "parser.y"
            {(yyval.type_tnode)=newAst("ProName",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1564 "parser.tab.c"
     break;
 
   case 46: /* ParamList: %empty  */
-#line 120 "parser.y"
+#line 121 "parser.y"
           {(yyval.type_tnode)=newAst("ParamList",0,-1);nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1570 "parser.tab.c"
     break;
 
   case 47: /* ParamList: ParamDecList  */
-#line 121 "parser.y"
+#line 122 "parser.y"
                  {(yyval.type_tnode)=newAst("ParamList",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1576 "parser.tab.c"
     break;
 
   case 48: /* ParamDecList: Param ParamMore  */
-#line 122 "parser.y"
+#line 123 "parser.y"
                             {(yyval.type_tnode)=newAst("ParamDecList",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1582 "parser.tab.c"
     break;
 
   case 49: /* ParamMore: %empty  */
-#line 123 "parser.y"
+#line 124 "parser.y"
           {(yyval.type_tnode)=newAst("ParamMore",0,-1);nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1588 "parser.tab.c"
     break;
 
   case 50: /* ParamMore: SEMI ParamDecList  */
-#line 124 "parser.y"
+#line 125 "parser.y"
                       {(yyval.type_tnode)=newAst("ParamMore",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1594 "parser.tab.c"
     break;
 
   case 51: /* Param: TypeDef FormList  */
-#line 125 "parser.y"
+#line 126 "parser.y"
                       {(yyval.type_tnode)=newAst("Param",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1600 "parser.tab.c"
     break;
 
   case 52: /* Param: VAR TypeDef FormList  */
-#line 126 "parser.y"
+#line 127 "parser.y"
                          {(yyval.type_tnode)=newAst("Param",3,(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1606 "parser.tab.c"
     break;
 
   case 53: /* FormList: ID FidMore  */
-#line 127 "parser.y"
+#line 128 "parser.y"
                    {(yyval.type_tnode)=newAst("FormList",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1612 "parser.tab.c"
     break;
 
   case 54: /* FidMore: %empty  */
-#line 128 "parser.y"
+#line 129 "parser.y"
         {(yyval.type_tnode)=newAst("FidMore",0,-1);nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1618 "parser.tab.c"
     break;
 
   case 55: /* FidMore: COMMA FormList  */
-#line 129 "parser.y"
+#line 130 "parser.y"
                    {(yyval.type_tnode)=newAst("FidMore",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1624 "parser.tab.c"
     break;
 
   case 56: /* ProcDecPart: DeclarePart  */
-#line 131 "parser.y"
+#line 132 "parser.y"
                        {(yyval.type_tnode)=newAst("ProcDecPart",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1630 "parser.tab.c"
     break;
 
   case 57: /* ProcBody: ProgramBody  */
-#line 132 "parser.y"
+#line 133 "parser.y"
                     {(yyval.type_tnode)=newAst("ProcBody",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1636 "parser.tab.c"
     break;
 
   case 58: /* ProgramBody: BEGIN1 StmList END  */
-#line 134 "parser.y"
-                              {(yyval.type_tnode)=newAst("ProgramBody",3,(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
+#line 135 "parser.y"
+                               {(yyval.type_tnode)=newAst("ProgramBody",3,(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1642 "parser.tab.c"
     break;
 
   case 59: /* StmList: Stm StmMore  */
-#line 136 "parser.y"
+#line 137 "parser.y"
                    {(yyval.type_tnode)=newAst("StmList",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1648 "parser.tab.c"
     break;
 
   case 60: /* StmMore: %empty  */
-#line 137 "parser.y"
+#line 138 "parser.y"
         {(yyval.type_tnode)=newAst("StmMore",0,-1);nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1654 "parser.tab.c"
     break;
 
   case 61: /* StmMore: SEMI StmList  */
-#line 138 "parser.y"
+#line 139 "parser.y"
                  {(yyval.type_tnode)=newAst("StmMore",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1660 "parser.tab.c"
     break;
 
   case 62: /* Stm: ConditionalStm  */
-#line 139 "parser.y"
+#line 140 "parser.y"
                   {(yyval.type_tnode)=newAst("Stm",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1666 "parser.tab.c"
     break;
 
   case 63: /* Stm: LoopStm  */
-#line 140 "parser.y"
+#line 141 "parser.y"
             {(yyval.type_tnode)=newAst("Stm",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1672 "parser.tab.c"
     break;
 
   case 64: /* Stm: InputStm  */
-#line 141 "parser.y"
+#line 142 "parser.y"
              {(yyval.type_tnode)=newAst("Stm",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1678 "parser.tab.c"
     break;
 
   case 65: /* Stm: OutputStm  */
-#line 142 "parser.y"
+#line 143 "parser.y"
               {(yyval.type_tnode)=newAst("Stm",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1684 "parser.tab.c"
     break;
 
   case 66: /* Stm: ReturnStm  */
-#line 143 "parser.y"
+#line 144 "parser.y"
               {(yyval.type_tnode)=newAst("Stm",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1690 "parser.tab.c"
     break;
 
   case 67: /* Stm: ID AssCall  */
-#line 144 "parser.y"
+#line 145 "parser.y"
                {(yyval.type_tnode)=newAst("Stm",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1696 "parser.tab.c"
     break;
 
   case 68: /* AssCall: AssignmentRest  */
-#line 145 "parser.y"
+#line 146 "parser.y"
                       {(yyval.type_tnode)=newAst("AssCall",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1702 "parser.tab.c"
     break;
 
   case 69: /* AssCall: CallStmRest  */
-#line 146 "parser.y"
+#line 147 "parser.y"
                 {(yyval.type_tnode)=newAst("AssCall",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1708 "parser.tab.c"
     break;
 
   case 70: /* AssignmentRest: VariMore ASSIGN Exp  */
-#line 147 "parser.y"
+#line 148 "parser.y"
                                   {(yyval.type_tnode)=newAst("AssignmentRest",3,(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1714 "parser.tab.c"
     break;
 
   case 71: /* ConditionalStm: IF RelExp THEN StmList ELSE StmList FI  */
-#line 148 "parser.y"
+#line 149 "parser.y"
                                                      {(yyval.type_tnode)=newAst("ConditionalStm",7,(yyvsp[-6].type_tnode),(yyvsp[-5].type_tnode),(yyvsp[-4].type_tnode),(yyvsp[-3].type_tnode),(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1720 "parser.tab.c"
     break;
 
   case 72: /* LoopStm: WHILE RelExp DO StmList ENDWH  */
-#line 149 "parser.y"
+#line 150 "parser.y"
                                      {(yyval.type_tnode)=newAst("LoopStm",5,(yyvsp[-4].type_tnode),(yyvsp[-3].type_tnode),(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1726 "parser.tab.c"
     break;
 
   case 73: /* InputStm: READ LPAREN Invar RPAREN  */
-#line 150 "parser.y"
+#line 151 "parser.y"
                                  {(yyval.type_tnode)=newAst("InputStm",4,(yyvsp[-3].type_tnode),(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1732 "parser.tab.c"
     break;
 
   case 74: /* Invar: ID  */
-#line 151 "parser.y"
+#line 152 "parser.y"
         {(yyval.type_tnode)=newAst("Invar",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1738 "parser.tab.c"
     break;
 
   case 75: /* OutputStm: WRITE LPAREN Exp RPAREN  */
-#line 152 "parser.y"
+#line 153 "parser.y"
                                  {(yyval.type_tnode)=newAst("OutputStm",4,(yyvsp[-3].type_tnode),(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1744 "parser.tab.c"
     break;
 
   case 76: /* ReturnStm: RETURN  */
-#line 153 "parser.y"
+#line 154 "parser.y"
                 {(yyval.type_tnode)=newAst("ReturnStm",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1750 "parser.tab.c"
     break;
 
   case 77: /* CallStmRest: LPAREN ActParamList RPAREN  */
-#line 155 "parser.y"
+#line 156 "parser.y"
                                       {(yyval.type_tnode)=newAst("CallStmRest",3,(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1756 "parser.tab.c"
     break;
 
   case 78: /* ActParamList: %empty  */
-#line 156 "parser.y"
+#line 157 "parser.y"
              {(yyval.type_tnode)=newAst("ActParamList",0,-1);nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1762 "parser.tab.c"
     break;
 
   case 79: /* ActParamList: Exp ActParamMore  */
-#line 157 "parser.y"
+#line 158 "parser.y"
                      {(yyval.type_tnode)=newAst("ActParamList",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1768 "parser.tab.c"
     break;
 
   case 80: /* ActParamMore: %empty  */
-#line 158 "parser.y"
+#line 159 "parser.y"
              {(yyval.type_tnode)=newAst("ActParamMore",0,-1);nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1774 "parser.tab.c"
     break;
 
   case 81: /* ActParamMore: COMMA ActParamList  */
-#line 159 "parser.y"
+#line 160 "parser.y"
                        {(yyval.type_tnode)=newAst("ActParamMore",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1780 "parser.tab.c"
     break;
 
   case 82: /* RelExp: Exp OtherRelE  */
-#line 160 "parser.y"
+#line 161 "parser.y"
                     {(yyval.type_tnode)=newAst("RelExp",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1786 "parser.tab.c"
     break;
 
   case 83: /* OtherRelE: CmpOp Exp  */
-#line 161 "parser.y"
+#line 162 "parser.y"
                    {(yyval.type_tnode)=newAst("OtherRelE",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1792 "parser.tab.c"
     break;
 
   case 84: /* Exp: Term OtherTerm  */
-#line 162 "parser.y"
+#line 163 "parser.y"
                   {(yyval.type_tnode)=newAst("Exp",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1798 "parser.tab.c"
     break;
 
   case 85: /* OtherTerm: %empty  */
-#line 163 "parser.y"
+#line 164 "parser.y"
           {(yyval.type_tnode)=newAst("OtherTerm",0,-1);nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1804 "parser.tab.c"
     break;
 
   case 86: /* OtherTerm: AddOp Exp  */
-#line 164 "parser.y"
+#line 165 "parser.y"
               {(yyval.type_tnode)=newAst("OtherTerm",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1810 "parser.tab.c"
     break;
 
   case 87: /* Term: Factor OtherFactor  */
-#line 165 "parser.y"
+#line 166 "parser.y"
                        {(yyval.type_tnode)=newAst("Term",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1816 "parser.tab.c"
     break;
 
   case 88: /* OtherFactor: %empty  */
-#line 166 "parser.y"
+#line 167 "parser.y"
             {(yyval.type_tnode)=newAst("OtherFactor",0,-1);nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1822 "parser.tab.c"
     break;
 
   case 89: /* OtherFactor: MultOP Term  */
-#line 167 "parser.y"
+#line 168 "parser.y"
                 {(yyval.type_tnode)=newAst("OtherFactor",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1828 "parser.tab.c"
     break;
 
   case 90: /* Factor: LPAREN Exp RPAREN  */
-#line 168 "parser.y"
+#line 169 "parser.y"
                         {(yyval.type_tnode)=newAst("Factor",3,(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1834 "parser.tab.c"
     break;
 
   case 91: /* Factor: INTC  */
-#line 169 "parser.y"
+#line 170 "parser.y"
          {(yyval.type_tnode)=newAst("Factor",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1840 "parser.tab.c"
     break;
 
   case 92: /* Factor: Varible  */
-#line 170 "parser.y"
+#line 171 "parser.y"
             {(yyval.type_tnode)=newAst("Factor",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1846 "parser.tab.c"
     break;
 
   case 93: /* Varible: ID VariMore  */
-#line 171 "parser.y"
+#line 172 "parser.y"
                    {(yyval.type_tnode)=newAst("Varible",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1852 "parser.tab.c"
     break;
 
   case 94: /* VariMore: %empty  */
-#line 172 "parser.y"
+#line 173 "parser.y"
          {(yyval.type_tnode)=newAst("VariMore",0,-1);nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1858 "parser.tab.c"
     break;
 
   case 95: /* VariMore: LMIDPAREN Exp RMIDPAREN  */
-#line 173 "parser.y"
+#line 174 "parser.y"
                             {(yyval.type_tnode)=newAst("VariMore",3,(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1864 "parser.tab.c"
     break;
 
   case 96: /* VariMore: DOT FieldVar  */
-#line 174 "parser.y"
+#line 175 "parser.y"
                  {(yyval.type_tnode)=newAst("VariMore",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1870 "parser.tab.c"
     break;
 
   case 97: /* FieldVar: ID FieldVarMode  */
-#line 175 "parser.y"
+#line 176 "parser.y"
                         {(yyval.type_tnode)=newAst("FieldVar",2,(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1876 "parser.tab.c"
     break;
 
   case 98: /* FieldVarMode: %empty  */
-#line 176 "parser.y"
+#line 177 "parser.y"
              {(yyval.type_tnode)=newAst("FieldVarMode",0,-1);nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1882 "parser.tab.c"
     break;
 
   case 99: /* FieldVarMode: LMIDPAREN Exp RMIDPAREN  */
-#line 177 "parser.y"
+#line 178 "parser.y"
                             {(yyval.type_tnode)=newAst("FieldVarMode",3,(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1888 "parser.tab.c"
     break;
 
   case 100: /* CmpOp: RELOP  */
-#line 178 "parser.y"
+#line 179 "parser.y"
            {(yyval.type_tnode)=newAst("CmpOp",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1894 "parser.tab.c"
     break;
 
   case 101: /* AddOp: PLUS  */
-#line 179 "parser.y"
+#line 180 "parser.y"
           {(yyval.type_tnode)=newAst("AddOp",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1900 "parser.tab.c"
     break;
 
   case 102: /* AddOp: MINUS  */
-#line 180 "parser.y"
+#line 181 "parser.y"
           {(yyval.type_tnode)=newAst("AddOp",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1906 "parser.tab.c"
     break;
 
   case 103: /* MultOP: TIMES  */
-#line 181 "parser.y"
+#line 182 "parser.y"
             {(yyval.type_tnode)=newAst("MultOp",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1912 "parser.tab.c"
     break;
 
   case 104: /* MultOP: DIV  */
-#line 182 "parser.y"
+#line 183 "parser.y"
         {(yyval.type_tnode)=newAst("MultOp",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1918 "parser.tab.c"
     break;
@@ -2111,5 +2111,5 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 184 "parser.y"
+#line 185 "parser.y"
 
