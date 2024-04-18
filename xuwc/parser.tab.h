@@ -90,7 +90,7 @@ extern int yydebug;
     LPAREN = 291,                  /* LPAREN  */
     RPAREN = 292,                  /* RPAREN  */
     LMIDPAREN = 293,               /* LMIDPAREN  */
-    RMINPAREN = 294,               /* RMINPAREN  */
+    RMIDPAREN = 294,               /* RMIDPAREN  */
     RELOP = 295,                   /* RELOP  */
     UNDERANGE = 296,               /* UNDERANGE  */
     COMMENT = 297,                 /* COMMENT  */

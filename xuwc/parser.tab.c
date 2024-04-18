@@ -141,7 +141,7 @@ enum yysymbol_kind_t
   YYSYMBOL_LPAREN = 36,                    /* LPAREN  */
   YYSYMBOL_RPAREN = 37,                    /* RPAREN  */
   YYSYMBOL_LMIDPAREN = 38,                 /* LMIDPAREN  */
-  YYSYMBOL_RMINPAREN = 39,                 /* RMINPAREN  */
+  YYSYMBOL_RMIDPAREN = 39,                 /* RMIDPAREN  */
   YYSYMBOL_RELOP = 40,                     /* RELOP  */
   YYSYMBOL_UNDERANGE = 41,                 /* UNDERANGE  */
   YYSYMBOL_COMMENT = 42,                   /* COMMENT  */
@@ -638,7 +638,7 @@ static const char *const yytname[] =
   "WHILE", "DO", "ENDWH", "BEGIN1", "END", "READ", "WRITE", "ARRAY", "OF",
   "RECORD", "RETURN", "INTEGER", "CHAR", "SEMI", "COMMA", "ASSIGN", "PLUS",
   "MINUS", "TIMES", "DIV", "DOT", "NOT", "LPAREN", "RPAREN", "LMIDPAREN",
-  "RMINPAREN", "RELOP", "UNDERANGE", "COMMENT", "SPACE", "EOL", "AERROR",
+  "RMIDPAREN", "RELOP", "UNDERANGE", "COMMENT", "SPACE", "EOL", "AERROR",
   "LOWER_THAN_ELSE", "$accept", "Program", "ProgramHead", "ProgramName",
   "DeclarePart", "TypeDecpart", "TypeDec", "TypeDecList", "TypeDecMore",
   "TypeId", "TypeDef", "BaseType", "StructureType", "ArrayType", "Low",
@@ -676,22 +676,22 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 static const yytype_int16 yypact[] =
 {
       22,     5,    17,    38,  -141,  -141,  -141,    14,    33,    47,
-    -141,  -141,  -141,    28,    21,    24,    11,    52,  -141,    11,
-      13,     3,     3,    25,    26,  -141,    42,    36,  -141,  -141,
-    -141,  -141,  -141,  -141,  -141,    27,    -3,  -141,  -141,    59,
+    -141,  -141,  -141,    18,    21,    23,    11,    52,  -141,    11,
+      13,     3,     3,    24,    25,  -141,    44,    36,  -141,  -141,
+    -141,  -141,  -141,  -141,  -141,    26,    -3,  -141,  -141,    60,
     -141,  -141,  -141,  -141,  -141,    61,  -141,  -141,    41,    64,
-       3,     3,  -141,  -141,  -141,    43,  -141,   -23,     3,    60,
-      34,    12,    20,  -141,    62,    70,     3,  -141,    21,  -141,
-      73,    74,    74,    63,    50,    55,  -141,    48,    14,    45,
-    -141,    49,    57,    51,     3,  -141,    54,    21,  -141,  -141,
+       3,     3,  -141,  -141,  -141,    42,  -141,   -23,     3,    63,
+      32,    12,    20,  -141,    62,    70,     3,  -141,    21,  -141,
+      73,    74,    74,    65,    50,    54,  -141,    46,    14,    48,
+    -141,    51,    56,    53,     3,  -141,    58,    21,  -141,  -141,
        3,  -141,  -141,  -141,     3,  -141,  -141,  -141,     3,    21,
-    -141,    56,    58,  -141,  -141,    46,    68,    65,    71,  -141,
-      59,  -141,    11,     4,  -141,  -141,     3,  -141,  -141,     3,
-    -141,  -141,  -141,  -141,    76,  -141,  -141,  -141,    81,  -141,
+    -141,    59,    66,  -141,  -141,    49,    57,    71,    77,  -141,
+      60,  -141,    11,     4,  -141,  -141,     3,  -141,  -141,     3,
+    -141,  -141,  -141,  -141,    75,  -141,  -141,  -141,    81,  -141,
     -141,    86,    74,  -141,    -3,    -3,  -141,  -141,  -141,    11,
-      98,    67,  -141,    78,    69,  -141,    21,  -141,  -141,    72,
-    -141,  -141,  -141,  -141,    98,    79,  -141,    82,     4,  -141,
-    -141,    93,    88,  -141,    98,  -141,    38,  -141,  -141,    29,
+      88,    68,  -141,    79,    69,  -141,    21,  -141,  -141,    72,
+    -141,  -141,  -141,  -141,    88,    82,  -141,    80,     4,  -141,
+    -141,    78,    87,  -141,    88,  -141,    38,  -141,  -141,    29,
     -141,  -141,    33,  -141,    52,  -141,  -141,  -141
 };
 
@@ -724,12 +724,12 @@ static const yytype_int8 yydefact[] =
 static const yytype_int16 yypgoto[] =
 {
     -141,  -141,  -141,  -141,   -54,  -141,  -141,    35,  -141,  -141,
-     -19,   -35,  -141,   -33,  -141,  -141,  -141,    80,   -21,   -65,
+     -19,   -35,  -141,   -33,  -141,  -141,  -141,    83,   -21,   -65,
     -141,  -141,  -141,     6,  -141,     7,  -141,  -141,   -59,  -141,
-    -141,  -141,   -39,  -141,  -141,  -140,  -141,  -141,  -141,   -51,
+    -141,  -141,   -42,  -141,  -141,  -140,  -141,  -141,  -141,   -51,
      -66,  -141,  -141,  -141,  -141,  -141,  -141,  -141,  -141,  -141,
-    -141,  -141,     8,  -141,   100,  -141,   -46,  -141,    30,  -141,
-    -141,  -141,    66,  -141,  -141,  -141,  -141,  -141
+    -141,  -141,     8,  -141,   100,  -141,   -46,  -141,    27,  -141,
+    -141,  -141,    67,  -141,  -141,  -141,  -141,  -141
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -754,14 +754,14 @@ static const yytype_uint8 yytable[] =
      102,   124,    37,    38,   170,    35,    20,    36,     1,    37,
       38,    21,    35,   128,    36,    22,    37,    38,   122,    58,
       23,    24,    91,    92,   125,    25,     7,    49,   126,    50,
-      14,    51,    95,    96,    37,    38,    16,    19,    33,    45,
-      67,    65,    66,    68,    74,    70,    76,   150,    78,    79,
-     144,    87,    84,    82,    88,   100,   104,    99,   110,   106,
-     161,   109,   112,   116,   113,   119,   118,   131,   146,   148,
-     121,   123,   134,   129,   140,   130,   132,   147,   135,    71,
-      71,    72,    72,   155,   157,   158,   168,   164,   160,   166,
-     169,   162,   171,   114,   153,   176,    73,   136,   137,   167,
-     154,   175,    64,    85,     0,     0,     0,   145,   127,     0,
+      14,    51,    95,    96,    37,    38,    16,    33,    19,    45,
+      65,    66,    67,    68,    70,    74,    76,   150,    78,    79,
+     144,    84,    88,    82,    87,   100,   104,    99,   110,   106,
+     161,   112,   113,   109,   119,   132,   116,   146,   118,   148,
+     131,   168,   121,   155,   140,   123,   129,   147,   134,    71,
+      71,    72,    72,   130,   135,   157,   158,   166,   160,   169,
+     164,   162,   171,   114,   153,   176,   167,   136,   137,    73,
+     154,   175,    64,     0,    85,   127,     0,   145,     0,     0,
        0,     0,     0,     0,   173,     0,     0,     0,     0,   140
 };
 
@@ -772,14 +772,14 @@ static const yytype_int16 yycheck[] =
       66,    87,    25,    26,   164,    21,     5,    23,     6,    25,
       26,    10,    21,    99,    23,    14,    25,    26,    84,    36,
       19,    20,    30,    31,    90,    24,     8,    34,    94,    36,
-      17,    38,    32,    33,    25,    26,     9,    29,    34,     7,
-      18,    36,    36,    27,     5,    38,     5,   132,    27,     5,
-     116,    11,    29,   119,    40,     5,     3,    15,    28,     5,
-     146,    18,    27,    38,    36,    28,    37,    41,    12,     3,
-      39,    37,    27,    37,   113,    37,    28,    16,    27,   134,
-     135,   134,   135,     5,    37,    27,    13,    28,    39,    27,
-      22,    39,   166,    78,   135,   174,    36,   110,   112,   158,
-     139,   172,    22,    57,    -1,    -1,    -1,   119,    98,    -1,
+      17,    38,    32,    33,    25,    26,     9,    34,    40,     7,
+      36,    36,    18,    27,    38,     5,     5,   132,    27,     5,
+     116,    29,    40,   119,    11,     5,     3,    15,    28,     5,
+     146,    27,    36,    18,    28,    28,    38,    12,    37,     3,
+      41,    13,    39,     5,   113,    37,    37,    16,    27,   134,
+     135,   134,   135,    37,    27,    37,    27,    27,    39,    22,
+      28,    39,   166,    78,   135,   174,   158,   110,   112,    36,
+     139,   172,    22,    -1,    57,    98,    -1,   119,    -1,    -1,
       -1,    -1,    -1,    -1,   169,    -1,    -1,    -1,    -1,   158
 };
 
@@ -788,7 +788,7 @@ static const yytype_int16 yycheck[] =
 static const yytype_int8 yystos[] =
 {
        0,     6,    48,    49,     5,    50,     0,     8,    51,    52,
-      53,     5,    54,    56,    17,    86,     9,    68,    69,    29,
+      53,     5,    54,    56,    17,    86,     9,    68,    69,    40,
        5,    10,    14,    19,    20,    24,    87,    89,    92,    93,
       94,    96,    97,    34,     5,    21,    23,    25,    26,    57,
       58,    59,    60,    63,    70,     7,    74,    75,    57,    34,
@@ -1331,7 +1331,7 @@ yyreduce:
 
   case 7: /* TypeDecpart: TypeDec  */
 #line 76 "parser.y"
-            {(yyval.type_tnode)=newAst("TypeDecPart",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
+            {(yyval.type_tnode)=newAst("TypeDecpart",1,(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1336 "parser.tab.c"
     break;
 
@@ -1341,9 +1341,9 @@ yyreduce:
 #line 1342 "parser.tab.c"
     break;
 
-  case 9: /* TypeDecList: TypeId ASSIGN TypeDef SEMI TypeDecMore  */
+  case 9: /* TypeDecList: TypeId RELOP TypeDef SEMI TypeDecMore  */
 #line 78 "parser.y"
-                                                  {(yyval.type_tnode)=newAst("TypeDecList",5,(yyvsp[-4].type_tnode),(yyvsp[-3].type_tnode),(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
+                                                 {(yyval.type_tnode)=newAst("TypeDecList",5,(yyvsp[-4].type_tnode),(yyvsp[-3].type_tnode),(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1348 "parser.tab.c"
     break;
 
@@ -1407,7 +1407,7 @@ yyreduce:
 #line 1408 "parser.tab.c"
     break;
 
-  case 20: /* ArrayType: ARRAY LMIDPAREN Low UNDERANGE Top RMINPAREN OF BaseType  */
+  case 20: /* ArrayType: ARRAY LMIDPAREN Low UNDERANGE Top RMIDPAREN OF BaseType  */
 #line 91 "parser.y"
                                                                  {(yyval.type_tnode)=newAst("ArrayType",8,(yyvsp[-7].type_tnode),(yyvsp[-6].type_tnode),(yyvsp[-5].type_tnode),(yyvsp[-4].type_tnode),(yyvsp[-3].type_tnode),(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1414 "parser.tab.c"
@@ -1857,7 +1857,7 @@ yyreduce:
 #line 1858 "parser.tab.c"
     break;
 
-  case 95: /* VariMore: LMIDPAREN Exp RMINPAREN  */
+  case 95: /* VariMore: LMIDPAREN Exp RMIDPAREN  */
 #line 173 "parser.y"
                             {(yyval.type_tnode)=newAst("VariMore",3,(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1864 "parser.tab.c"
@@ -1881,7 +1881,7 @@ yyreduce:
 #line 1882 "parser.tab.c"
     break;
 
-  case 99: /* FieldVarMode: LMIDPAREN Exp RMINPAREN  */
+  case 99: /* FieldVarMode: LMIDPAREN Exp RMIDPAREN  */
 #line 177 "parser.y"
                             {(yyval.type_tnode)=newAst("FieldVarMode",3,(yyvsp[-2].type_tnode),(yyvsp[-1].type_tnode),(yyvsp[0].type_tnode));nodeList[nodeNum]=(yyval.type_tnode);nodeNum++;}
 #line 1888 "parser.tab.c"
